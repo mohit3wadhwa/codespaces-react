@@ -1,28 +1,25 @@
-import './App.css';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Gallery from './Gallery';
+import Settings from './Settings';
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
 
 function App() {
+  const [columns, setColumns] = useState(3); // Default columns = 3
+  const [imageSize, setImageSize] = useState(200); // Default image size = 200px
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
-    </div>
+    <AppContainer>
+      <h1>Customizable Product Gallery</h1>
+      <Settings setColumns={setColumns} setImageSize={setImageSize} />
+      <Gallery columns={columns} imageSize={imageSize} />
+    </AppContainer>
   );
 }
 
